@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Reserva_B.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Registro</h1>
+
+<p>
+    <a class="btn btn-link" asp-action="Create">Crear nuevo empleado</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Legajo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            
+            <th>
+               
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Legajo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.FechaAlta)
+            </td>*@
+            
+            <td>
+                <a class="btn btn-link" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-link" asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Reserva_B.Models.Funcion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Funciones</h1>
+
+<p>
+    <a class="btn btn-link" asp-action="Create">Crear nueva función </a>
+</p>
+<p>
+    <a class="btn btn-link" asp-action="RevisarFunciones" asp-controller="Funciones">Revisar funciones</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ButacasDisponibles)
+            </th>           
+            <th>
+                @Html.DisplayNameFor(model => model.Pelicula)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ButacasDisponibles)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pelicula.Titulo)
+            </td>
+
+            <td>
+                <a class="btn btn-link" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-link" asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

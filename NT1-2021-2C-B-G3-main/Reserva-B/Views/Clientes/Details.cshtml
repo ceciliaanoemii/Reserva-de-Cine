@@ -1,0 +1,111 @@
+﻿@model Reserva_B.Models.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalle</h1>
+
+<div>
+    <h4 class="text-left bg-info text-light ">Cliente</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dni)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dni)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+    </dl>
+</div>
+
+
+
+<div>
+    <h4 class="text-left bg-info text-light"> @Html.DisplayNameFor(Model => Model.Telefonos)</h4>
+
+    @if (Model.Telefonos.Any())
+    {
+<ul>
+    @foreach (Telefono tel in Model.Telefonos)
+    {
+        <li>@tel.NumberoCompleto</li>
+        <div class="form-group">
+            <a class="btn btn-link" asp-controller="Telefonos" asp-action="Edit" asp-route-id="@tel.Id">Editar Telefono</a>
+        </div>
+    }
+
+    <div class="form-group">
+        <a class="btn btn-link" asp-controller="Telefonos" asp-action="Create" )">Cargar Otro Telefono</a>
+    </div>
+</ul>
+
+    }
+
+    else
+    {
+        <h6>No hay telefonos cargados</h6>
+
+        <div class="form-group">
+            <a class="btn btn-link" asp-controller="Telefonos" asp-action="Create" )">Cargar Telefono</a>
+        </div>
+    }
+
+
+
+</div>
+<div>
+    <h4 class="text-left bg-info text-light"> @Html.DisplayNameFor(Model => Model.Direccion)</h4>
+
+    @if (Model.Direccion != null)
+    {
+        <p> @Model.Direccion.DireccionCompleta</p>
+
+        <div class="form-group">
+            <a class="btn btn-link" asp-controller="Direcciones" asp-action="Edit" asp-route-id="@Model.Direccion.Id">Editar Direccion</a>
+        </div>
+
+    }
+    else
+    {
+        <h6>No hay direccion cargada </h6>
+
+        <div class="form-group">
+            <a class="btn btn-link" asp-controller="Direcciones" asp-action="Create">Cargar Direccion</a>
+        </div>
+    }
+
+</div>
+<div>
+    <a class="btn btn-link" asp-controller="Home" asp-action="Index">Volver a Cartelera </a>
+</div>

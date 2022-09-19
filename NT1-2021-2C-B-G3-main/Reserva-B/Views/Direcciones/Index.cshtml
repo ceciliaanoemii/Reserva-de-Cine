@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Reserva_B.Models.Direccion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Direccion</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Calle)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CodPostal)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Piso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persona)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodPostal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Piso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persona.Apellido)
+            </td>
+            <td>
+                <a class="btn btn-link" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-link" asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Elimiar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

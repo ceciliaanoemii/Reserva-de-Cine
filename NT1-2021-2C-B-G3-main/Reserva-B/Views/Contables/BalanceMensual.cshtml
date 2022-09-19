@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Reserva_B.Models.Funcion>
+
+@inject SignInManager<Persona> signInManager
+
+@{
+    ViewData["Title"] = "Balance Mensual";
+}
+
+<h1>
+    <div class="p-3 mb-2 bg-dark text-white">Balance Mensual</div>
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Pelicula.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pelicula.Subtotal)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pelicula.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pelicula.Subtotal)
+                </td>
+                         
+            </tr>
+        }
+    </tbody>
+</table>
+    

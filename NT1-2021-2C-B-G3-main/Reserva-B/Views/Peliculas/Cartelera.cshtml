@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Reserva_B.Models.Pelicula>
+
+@inject SignInManager<Persona> signInManager
+
+@{
+    ViewData["Title"] = "Cartelera";
+}
+<body style="background-color: black;">
+
+
+    <h1>
+        <div class="p-3 mb-2 bg-dark text-white">Cartelera</div>
+    </h1>
+
+
+    @*<li class="dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-area="">Generos</a>
+        <ul class="dropdown-menu">
+            @foreach (var item in Model)
+            {
+
+                <li class="dropdown-item">
+                    <a class="nav-link text-dark" asp-controller="Peliculas" asp-action="Cartelera" asp-route-idGenero="@item.Genero.Id">@item.Genero.Nombre</a>
+                </li>
+
+            }
+
+
+
+        </ul>
+    </li>*@
+
+
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <div class="card cartelera m-2">
+                    <div class="card-body">
+                        <div class="mb-2 d-flex justify-content-center">
+                            <a class="FotoCartelera" asp-area="" asp-controller="ReservasCliente" asp-action="Create" asp-route-id=@item.Id>
+                                <img src="/img/@item.Foto" class="FotoCartelera" />
+                            </a>
+                        </div>
+
+                        <h5 class="card-title">@item.Titulo</h5>
+                        <p class="card-text">@item.Descripcion</p>
+
+
+                        <a class="btn btn-success btn-sm text-white m-1" asp-area="" asp-controller="ReservasCliente" asp-action="Create" asp-route-id=@item.Id>Reservar</a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>

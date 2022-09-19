@@ -1,0 +1,41 @@
+﻿@model Reserva_B.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Descripción</h1>
+
+<div>
+    <h4>Pelicula</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaDeLanzamiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaDeLanzamiento)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    <a class="btn btn-link" asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a class="btn btn-link" asp-action="Index">Volver atrás</a>
+</div>

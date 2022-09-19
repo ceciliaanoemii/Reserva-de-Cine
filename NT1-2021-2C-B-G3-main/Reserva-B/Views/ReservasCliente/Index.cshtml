@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Reserva_B.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1  class="text-white" >Reserva</h1>
+
+<table class="table">
+    <thead>
+        <tr  class="text-white">
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadButacas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAlta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadButacas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Funcion.Descripcion)
+            </td>
+            <td>
+                <a class="btn btn-link"  asp-action="Details" asp-route-id="@item.Id">Detalle</a> 
+                <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Cancelar reserva</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

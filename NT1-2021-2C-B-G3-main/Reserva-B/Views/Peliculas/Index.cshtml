@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Reserva_B.Models.Pelicula>
+@inject SignInManager<Persona> signInManager
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Peliculas</h1>
+
+<p>
+    <a class="btn btn-link" asp-action="Create">Cargar pelicula</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr class="text-white">
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeLanzamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeLanzamiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+
+            @if ((signInManager.IsSignedIn(User)) && (User.IsInRole("Empleado")))
+            {
+
+        <td>
+            <a class="btn btn-link" asp-action="SubirFoto" asp-route-id="@item.Id">Subir foto</a> |
+            <a class="btn btn-link" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+            <a class="btn btn-link" asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+            <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+        </td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>

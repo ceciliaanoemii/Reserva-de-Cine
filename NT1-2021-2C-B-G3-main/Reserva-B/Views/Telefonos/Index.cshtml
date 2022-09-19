@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Reserva_B.Models.Telefono>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Telefono</h1>
+
+<p>
+    <a class="btn btn-link" asp-action="Create">Crear</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Principal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodArea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Persona)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Principal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            
+            <td>
+                <a class="btn btn-link" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-link" asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Elimiar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

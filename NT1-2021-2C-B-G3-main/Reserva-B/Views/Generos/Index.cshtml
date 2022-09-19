@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Reserva_B.Models.Genero>
+@inject SignInManager<Persona> signInManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Género</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @if ((signInManager.IsSignedIn(User)) && (User.IsInRole("Empleado")))
+                    {
+                    <a class="btn btn-link" asp-action="Edit" asp-route-id="@item.Id">Editar |</a> 
+                      <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+                    <a class="btn btn-link" asp-action="Cartelera" asp-controller="Peliculas" asp-route-idGenero="@item.Id">Filtrar</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>

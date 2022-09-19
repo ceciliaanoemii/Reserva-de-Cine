@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Reserva_B.Models.Cliente>
+@inject SignInManager<Persona> signInManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-white">Cliente</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            @if ((signInManager.IsSignedIn(User)) && (User.IsInRole("Cliente")))
+            {
+                <td>
+                    <a class="btn btn-link" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a class="btn btn-link" asp-action="Details" asp-route-id="@item.Id">Detalle</a> |
+                    <a class="btn btn-link" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>
